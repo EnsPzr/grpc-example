@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package product;
+option go_package="/protos/product";
+
+service ProductService {
+  rpc List(ProductListRequest) returns (ProductListResponse) {};
+  rpc Post(Product) returns(Product){};
+}
+
+message ProductListRequest{}
+
+message ProductListResponse{
+  repeated Product items = 1;
+}
+
+message Product{
+  int64 id = 1;
+  string name = 2;
+  float price = 3;
+}
